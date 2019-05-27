@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RS.DAL</RootNamespace>
     <AssemblyName>RS.DAL</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +56,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RSContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -64,6 +66,10 @@
     <ProjectReference Include="..\RS.Core\RS.Core.csproj">
       <Project>{cc1d6efc-1007-4359-9de1-e74fdda657f2}</Project>
       <Name>RS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RS.Interfaces\RS.Interfaces.csproj">
+      <Project>{fcffda9a-b42a-499d-9e7f-d2580e269051}</Project>
+      <Name>RS.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
