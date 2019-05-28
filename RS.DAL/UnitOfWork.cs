@@ -22,12 +22,12 @@ namespace RS.DAL
         public UnitOfWork()
         {
             db = new RSContext();
-            categoryRep = new GenericRepository<Category>(db);
-            ingridientRep = new GenericRepository<Ingridient>(db);
-            ingridientForDishRep = new GenericRepository<IngridientForDish>(db);
-            recipeRep = new GenericRepository<Recipe>(db);
-            timePrepaeringRep = new GenericRepository<TimePrepaering>(db);
-            typeRep = new GenericRepository<Core.Type>(db);
+            categoryRep = new Repository<Category>(db);
+            ingridientRep = new Repository<Ingridient>(db);
+            ingridientForDishRep = new Repository<IngridientForDish>(db);
+            recipeRep = new Repository<Recipe>(db);
+            timePrepaeringRep = new Repository<TimePrepaering>(db);
+            typeRep = new Repository<Core.Type>(db);
         }
         
         public IGenericRepository<Category> CategoryRep => categoryRep;
@@ -36,7 +36,7 @@ namespace RS.DAL
         
         public IGenericRepository<IngridientForDish> IngridientForDishRep => ingridientForDishRep;
         
-        public IGenericRepository<Recipe> RecipeRep => return recipeRep;
+        public IGenericRepository<Recipe> RecipeRep => recipeRep;
         
         public IGenericRepository<TimePrepaering> TimePrepaeringRep => timePrepaeringRep;
         

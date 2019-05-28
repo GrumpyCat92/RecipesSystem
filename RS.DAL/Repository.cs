@@ -1,6 +1,7 @@
 ﻿using RS.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Text;
 
 namespace RS.DAL
@@ -20,7 +21,7 @@ namespace RS.DAL
 
         public void Create(T item)
         {
-            dbSet.Add(Cart);
+            dbSet.Add(item);
         }
 
         public void Delete(long id)
@@ -65,7 +66,7 @@ namespace RS.DAL
 
         public void Update(T item)
         {
-            db.Entry(Cart).State = EntityState.Modified;
+            db.Entry(item).State = EntityState.Modified;
         }
     }
 }

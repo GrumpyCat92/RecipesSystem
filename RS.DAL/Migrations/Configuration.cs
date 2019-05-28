@@ -1,5 +1,6 @@
 namespace RS.DAL.Migrations
 {
+    using RS.Core;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -28,13 +29,13 @@ namespace RS.DAL.Migrations
                 new Category { Name = "Drink" });
 
             context.TimesPrepaering.AddOrUpdate(
-                e => e.Name,
+                e => e.Period,
                 new TimePrepaering{ Period = "Less then 30 min"});
             context.TimesPrepaering.AddOrUpdate(
-                e => e.Name,
+                e => e.Period,
                 new TimePrepaering { Period = "From 30 min to 60 min" });
             context.TimesPrepaering.AddOrUpdate(
-                e => e.Name,
+                e => e.Period,
                 new TimePrepaering { Period = "More then 60 min" });
 
             context.Types.AddOrUpdate(

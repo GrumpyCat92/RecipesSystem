@@ -7,12 +7,12 @@ namespace RS.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IGenericRepository<Category> CategoryRep { get; set; }
-        IGenericRepository<Ingridient> IngridientRep { get; set; }
-        IGenericRepository<IngridientForDish> IngridientForDishRep { get; set; }
-        IGenericRepository<Recipe> RecipeRep { get; set; }
-        IGenericRepository<TimePrepaering> TimePrepaeringRep { get; set; }
-        IGenericRepository<Type> TypeRep { get; set; }
+        IGenericRepository<Category> CategoryRep { get; }
+        IGenericRepository<Ingridient> IngridientRep { get; }
+        IGenericRepository<IngridientForDish> IngridientForDishRep { get;}
+        IGenericRepository<Recipe> RecipeRep { get; }
+        IGenericRepository<TimePrepaering> TimePrepaeringRep { get;}
+        IGenericRepository<Type> TypeRep { get; }
         Task SaveAsync();
     }
 }
