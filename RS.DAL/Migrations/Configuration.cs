@@ -14,10 +14,30 @@ namespace RS.DAL.Migrations
 
         protected override void Seed(RS.DAL.RSContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.Categories.AddOrUpdate(
+                new Category { Name = "Desert"});
+            context.Categories.AddOrUpdate(
+                new Category { Name = "Salad" });
+            context.Categories.AddOrUpdate(
+                new Category { Name = "Soup" });
+            context.Categories.AddOrUpdate(
+                new Category { Name = "Drink" });
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            context.TimesPrepaering.AddOrUpdate(
+                new TimePrepaering{ Period = "Less then 30 min"});
+            context.TimesPrepaering.AddOrUpdate(
+                new TimePrepaering { Period = "From 30 min to 60 min" });
+            context.TimesPrepaering.AddOrUpdate(
+                new TimePrepaering { Period = "More then 60 min" });
+
+            context.Types.AddOrUpdate(
+                new Core.Type {Name = "Breakfast"});
+            context.Types.AddOrUpdate(
+                new Core.Type { Name = "Dinner" });
+            context.Types.AddOrUpdate(
+                new Core.Type { Name = "Lunch" });
+            context.Types.AddOrUpdate(
+                new Core.Type { Name = "Celebration dish" });
         }
     }
 }
