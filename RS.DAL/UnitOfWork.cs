@@ -30,35 +30,17 @@ namespace RS.DAL
             typeRep = new GenericRepository<Core.Type>(db);
         }
         
-        public IGenericRepository<Category> CategoryRep
-        {
-            get { return categoryRep; }
-        }
+        public IGenericRepository<Category> CategoryRep => categoryRep;
         
-        public IGenericRepository<Ingridient> IngridientRep
-        {
-            get { return ingridientRep; }
-        }
+        public IGenericRepository<Ingridient> IngridientRep => ingridientRep;
         
-        public IGenericRepository<IngridientForDish> IngridientForDishRep
-        {
-            get { return ingridientForDishRep; }
-        }
+        public IGenericRepository<IngridientForDish> IngridientForDishRep => ingridientForDishRep;
         
-        public IGenericRepository<Recipe> RecipeRep
-        {
-            get { return recipeRep; }
-        }
+        public IGenericRepository<Recipe> RecipeRep => return recipeRep;
         
-        public IGenericRepository<TimePrepaering> TimePrepaeringRep
-        {
-            get { return timePrepaeringRep; }
-        }
+        public IGenericRepository<TimePrepaering> TimePrepaeringRep => timePrepaeringRep;
         
-        public IGenericRepository<Type> TypeRep
-        {
-            get { return typeRep; }
-        }
+        public IGenericRepository<RS.Core.Type> TypeRep => typeRep;
         
         public void Dispose()
         {
@@ -85,7 +67,7 @@ namespace RS.DAL
             }
         }
 
-        public Task SaveAsync()
+        public async Task SaveAsync()
         {
             await db.SaveChangesAsync();
         }
