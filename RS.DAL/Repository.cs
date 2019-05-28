@@ -5,25 +5,29 @@ using System.Text;
 
 namespace RS.DAL
 {
-    public class Repository<T> : IGenericRepository<T>
+    public class Repository<T> : IGenericRepository<T> where T : class
     {
         private bool disposed = false;
 
         private RSContext db;
+        DbSet<T> dbSet;
 
         public Repository(RSContext db)
         {
             this.db = db;
+            dbSet = db.Set<T>();
         }
 
         public void Create(T item)
         {
-            throw new NotImplementedException();
+            dbSet.Add(Cart);
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            T item = dbSet.Find(id);
+            if (item != null)
+                dbSet.Remove(item);
         }
 
         public virtual void Dispose(bool disposing)
@@ -46,22 +50,22 @@ namespace RS.DAL
 
         public T Get(long id)
         {
-            throw new NotImplementedException();
+            return dbSet.Find(id);
         }
 
         public IEnumerable<T> GetList()
         {
-            throw new NotImplementedException();
+            return dbSet.AsNoTracking();
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            db.SaveChanges();
         }
 
         public void Update(T item)
         {
-            throw new NotImplementedException();
+            db.Entry(Cart).State = EntityState.Modified;
         }
     }
 }
