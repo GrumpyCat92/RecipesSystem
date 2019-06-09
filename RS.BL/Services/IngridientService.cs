@@ -39,19 +39,11 @@ namespace RS.BL.Services
                 {
                     Name = name
                 });
-                return new ResultMessage
-                {
-                    Error = false,
-                    Message = "Success"
-                };
+                return new ResultMessage("Success");
             }
             catch (Exception ex)
             {
-                return new ResultMessage
-                {
-                    Error = true,
-                    Message = ex.Message
-                };
+                return new ResultMessage(ex.Message);
             }
         }
 
@@ -64,29 +56,17 @@ namespace RS.BL.Services
                 {
                     item.Name = name;
                     Database.IngridientRep.Update(item);
-                    return new ResultMessage
-                    {
-                        Error = false,
-                        Message = "Success"
-                    };
+                    return new ResultMessage(false, "Success");
                 }
                 else
                 {
-                    return new ResultMessage
-                    {
-                        Error = true,
-                        Message = "Not Found by Id"
-                    };
+                    return new ResultMessage("Not Found by Id");
                 }
 
             }
             catch (Exception ex)
             {
-                return new ResultMessage
-                {
-                    Error = true,
-                    Message = ex.Message
-                };
+                return new ResultMessage(ex.Message);
             }
         }
     }

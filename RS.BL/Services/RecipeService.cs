@@ -2,6 +2,7 @@
 using RS.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RS.BL.Services
@@ -48,6 +49,58 @@ namespace RS.BL.Services
             }
 
             return recipes;
+        }
+
+        public ResultMessage CreateRecipe(CreateRecipe recipe)
+        {
+            try
+            {
+                var category = Database.CategoryRep.Get(recipe.CategoryId);
+                if (category == null)
+                    return new ResultMessage("Category is not exist");
+                var timePrep = Database.TimePrepaeringRep.Get(recipe.TimePrepaeringId);
+                if (timePrep == null)
+                    return new ResultMessage("Time prepaering is not exist");
+                var type = Database.TypeRep.Get(recipe.TypeId);
+                if (type == null)
+                    return new ResultMessage("Type is not exist");
+
+                Database.RecipeRep.Create(new Core.Recipe
+                {
+                    Name = recipe.Name,
+                    Text = recipe.Text,
+                    Category = category,
+                    Type = type,
+                    TimePrepaering = timePrep
+                });
+
+                Database.RecipeRep.Save();
+
+                var receipeBase = Database.RecipeRep.GetList()
+                    .Where(e => e.Name == recipe.Name)
+                    .FirstOrDefault();
+
+                foreach (var item in recipe.IngridientsList)
+                {
+                    var ingridient = Database.IngridientRep.Get(item.Id);
+                    if (ingridient == null)
+                        return new ResultMessage("Ingridient is not exist");
+                    Database.IngridientForDishRep.Create(new Core.IngridientForDish
+                    {
+                        Count = item.Count,
+                        Recipe = receipeBase,
+                        Ingridient = ingridient
+                    });
+
+                    Database.IngridientForDishRep.Save();
+                }
+
+                return new ResultMessage(false, "Success");
+            }
+            catch(Exception ex)
+            {
+                return new ResultMessage(ex.Message);
+            }
         }
     }
 }

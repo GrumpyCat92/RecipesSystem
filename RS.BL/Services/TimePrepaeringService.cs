@@ -39,19 +39,11 @@ namespace RS.BL.Services
                 {
                     Period = name
                 });
-                return new ResultMessage
-                {
-                    Error = false,
-                    Message = "Success"
-                };
+                return new ResultMessage(false, "Success");
             }
             catch (Exception ex)
             {
-                return new ResultMessage
-                {
-                    Error = true,
-                    Message = ex.Message
-                };
+                return new ResultMessage(ex.Message);
             }
         }
 
@@ -64,29 +56,17 @@ namespace RS.BL.Services
                 {
                     item.Period = name;
                     Database.TimePrepaeringRep.Update(item);
-                    return new ResultMessage
-                    {
-                        Error = false,
-                        Message = "Success"
-                    };
+                    return new ResultMessage(false, "Success");
                 }
                 else
                 {
-                    return new ResultMessage
-                    {
-                        Error = true,
-                        Message = "Not Found by Id"
-                    };
+                    return new ResultMessage("Not Found by Id");
                 }
 
             }
             catch (Exception ex)
             {
-                return new ResultMessage
-                {
-                    Error = true,
-                    Message = ex.Message
-                };
+                return new ResultMessage(ex.Message);
             }
         }
     }
